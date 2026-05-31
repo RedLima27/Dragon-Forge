@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Dragon Forge — Cutelaria Artesanal Premium"/>
+  <title>Dragon Forge — Cutelaria Artesanal Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img class="ld-logo" src="assets/IMG/Dragon Forge Logo.png" alt="Dragon Forge"/>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <p class="ld-txt">Iniciando a Forja...</p>
+</div>
+
+<!-- Toast -->
+<div class="toast-box" id="toastBox"></div>
+
+<!-- Modal -->
+<div class="modal-ov" id="modalOv">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle"></div>
+    <div id="modalBody"></div>
+    <div class="modal-foot">
+      <button class="btn btn-secondary btn-sm" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary btn-sm" id="modalOkBtn">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="pub-nav" id="pubNav">
+  <div class="nav-brand" onclick="showPub('home')">
+    <img src="assets/IMG/Dragon Forge Logo.png" alt="Dragon Forge" class="nav-logo-round"/>
+    <span class="nav-brand-txt">Dragon Forge</span>
+  </div>
+  <div class="nav-links">
+    <span class="nl active" onclick="showPub('home')">Início</span>
+    <span class="nl" onclick="showPub('catalog')">Catálogo</span>
+    <span class="nl" onclick="showPub('configurator')">Monte sua Lâmina</span>
+    <span class="nl" onclick="showPub('promotions')">Promoções</span>
+    <span class="nl" onclick="showPub('about')">Sobre</span>
+    <span class="nl" onclick="showPub('faq')">FAQ</span>
+    <span class="nl" onclick="showPub('contact')">Contato</span>
+    <span class="nl" onclick="showPub('tracking')" style="color:var(--orange);border:1px solid rgba(255,106,0,.25);padding:5px 11px">Meu Pedido</span>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-secondary btn-sm nav-logged-out" onclick="openLoginModal()">Entrar</button>
+    <button class="btn btn-secondary btn-sm nav-logged-in" onclick="showPub('my-orders')" style="display:none">👤 <span class="nav-username"></span></button>
+    <button class="btn btn-danger btn-sm nav-logged-in" onclick="doLogout()" style="display:none">Sair</button>
+    <button class="btn btn-primary btn-sm" onclick="showPub('configurator')">Monte sua Lâmina</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMob()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <span class="nl" onclick="showPub('home')">Início</span>
+  <span class="nl" onclick="showPub('catalog')">Catálogo</span>
+  <span class="nl" onclick="showPub('configurator')">Monte sua Lâmina</span>
+  <span class="nl" onclick="showPub('promotions')">Promoções</span>
+  <span class="nl" onclick="showPub('about')">Sobre</span>
+  <span class="nl" onclick="showPub('faq')">FAQ</span>
+  <span class="nl" onclick="showPub('contact')">Contato</span>
+  <span class="nl" onclick="showPub('tracking')" style="color:var(--orange)">Meu Pedido</span>
+  <span class="nl nav-logged-in" onclick="showPub('my-orders');closeMob()" style="display:none;color:var(--orange)">👤 Meus Pedidos</span>
+  <div class="mob-btns">
+    <button class="btn btn-secondary btn-sm nav-logged-out" onclick="openLoginModal();closeMob()">Entrar</button>
+    <button class="btn btn-danger btn-sm nav-logged-in" onclick="doLogout()" style="display:none">Sair</button>
+    <button class="btn btn-primary btn-sm" onclick="showPub('configurator');closeMob()">Monte sua Lâmina</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HOME ═══════════════════════ -->
+<div class="pub-sec active" id="pub-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="assets/IMG/Dragon Forge Logo.png" alt="Dragon Forge" class="hero-logo-round"/>
+      </div>
+      <div class="hero-badge">✦ Cutelaria artesanal por Rodrigo Barbosa ✦</div>
+      <h1 class="hero-title">FORJANDO <span class="hi">PRECISÃO.</span><br/>ENTREGANDO FACAS QUE FUNCIONAM.</h1>
+      <p class="hero-sub">Facas artesanais pensadas para uso real, resistência e acabamento cuidadoso.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary btn-lg" onclick="showPub('catalog')">Explorar Catálogo</button>
+        <button class="btn btn-outline btn-lg" onclick="showPub('configurator')">Monte sua Lâmina</button>
+      </div>
+    </div>
+    <div class="hero-scroll">▼ ROLAR</div>
+  </section>
+
+  <section class="pub-pad-dark">
+    <div class="pub-max" style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow">Por que a Dragon Forge?</div>
+      <h2 class="sh">Excelência em cada detalhe</h2>
+      <p class="sl" style="margin:0 auto">Combinamos técnicas tradicionais de forja com design contemporâneo para criar peças únicas.</p>
+    </div>
+    <div class="pub-max">
+      <div class="feat-grid">
+        <div class="feat-card"><div class="feat-icon"></div><div class="feat-title">Forja Artesanal</div><p class="feat-desc">Cada faca é trabalhada à mão por mestres cuteleiros. Zero produção em série.</p></div>
+        <div class="feat-card"><div class="feat-icon"></div><div class="feat-title">Aços Premium</div><p class="feat-desc">D2, 5160, Damascus — apenas os melhores para máxima performance e durabilidade.</p></div>
+        <div class="feat-card"><div class="feat-icon"></div><div class="feat-title">Madeiras Nobres</div><p class="feat-desc">Imbuia, Jacarandá, Nogueira — madeiras raras selecionadas a dedo.</p></div>
+        <div class="feat-card"><div class="feat-icon"></div><div class="feat-title">100% Personalizado</div><p class="feat-desc">Monte sua faca exatamente como imagina — modelo, aço, cabo, acabamento e bainha.</p></div>
+        <div class="feat-card"><div class="feat-icon"></div><div class="feat-title">Garantia Vitalícia</div><p class="feat-desc">Garantia contra defeitos de fabricação para toda a vida da peça.</p></div>
+        <div class="feat-card"><div class="feat-icon"></div><div class="feat-title">Embalagem Premium</div><p class="feat-desc">Estojo artesanal em madeira incluído — embalagem pensada para proteger e impressionar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-pad">
+    <div class="pub-max">
+      <div style="text-align:center;margin-bottom:40px">
+        <div class="eyebrow">Materiais</div>
+        <h2 class="sh">Aços &amp; Madeiras Selecionados</h2>
+      </div>
+      <div style="margin-bottom:14px"><div class="mat-group-title">Aços</div><div class="mat-row" id="mat-steels"></div></div>
+      <div><div class="mat-group-title">Madeiras & Cabos</div><div class="mat-row" id="mat-woods"></div></div>
+    </div>
+  </section>
+
+  <section class="pub-pad-dark">
+    <div class="pub-max" style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow">Processo</div>
+      <h2 class="sh">Da Forja às suas Mãos</h2>
+    </div>
+    <div class="pub-max">
+      <div class="proc-grid">
+        <div class="proc-step"><div class="proc-num">1</div><div class="proc-title">Seleção do Aço</div><p class="proc-desc">O melhor aço é escolhido conforme o uso pretendido da faca.</p></div>
+        <div class="proc-step"><div class="proc-num">2</div><div class="proc-title">Forja Manual</div><p class="proc-desc">Aquecimento, martelamento e modelagem artesanal da lâmina.</p></div>
+        <div class="proc-step"><div class="proc-num">3</div><div class="proc-title">Têmpera</div><p class="proc-desc">Tratamento térmico preciso para dureza e flexibilidade ideais.</p></div>
+        <div class="proc-step"><div class="proc-num">4</div><div class="proc-title">Acabamento</div><p class="proc-desc">Polimento, afiação e montagem do cabo com perfeição total.</p></div>
+        <div class="proc-step"><div class="proc-num">5</div><div class="proc-title">Entrega</div><p class="proc-desc">Estojo artesanal exclusivo e envio com rastreamento completo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pub-pad" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,106,0,.09) 0%,transparent 65%);pointer-events:none"></div>
+    <div style="position:relative;max-width:580px;margin:0 auto">
+      <div class="eyebrow">Pronto para começar?</div>
+      <h2 class="sh">Crie a faca dos seus sonhos</h2>
+      <p style="color:var(--metal-lt);margin-bottom:34px;line-height:1.7">Use nosso configurador e monte sua lâmina personalizada com preço em tempo real.</p>
+      <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary btn-lg" onclick="showPub('configurator')">Configurar Agora</button>
+        <button class="btn btn-outline btn-lg" onclick="showPub('contact')">Falar com Mestre</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════ CATÁLOGO ═══════════════════════ -->
+<div class="pub-sec" id="pub-catalog">
+  <div class="cat-sec">
+    <div style="margin-bottom:24px">
+      <div class="eyebrow">Produtos</div>
+      <h2 class="sh">Catálogo Dragon Forge</h2>
+      <p style="color:var(--metal-lt)">Facas artesanais para pronta entrega ou sob encomenda.</p>
+    </div>
+    <div class="cat-filters">
+      <div class="fl-group"><span class="fl-lbl">Tipo</span>
+        <select class="fl-sel" id="filterType" onchange="renderCatalog()">
+          <option value="all">Todos</option>
+          <option value="Chef">Chef</option>
+          <option value="Bowie">Bowie</option>
+          <option value="Hunter">Hunter</option>
+          <option value="Bushcraft">Bushcraft</option>
+          <option value="Tactical">Tactical</option>
+        </select>
+      </div>
+      <div class="fl-group"><span class="fl-lbl">Preço Máx.</span>
+        <select class="fl-sel" id="filterPrice" onchange="renderCatalog()">
+          <option value="9999">Qualquer</option>
+          <option value="800">Até R$ 800</option>
+          <option value="1200">Até R$ 1.200</option>
+          <option value="2000">Até R$ 2.000</option>
+        </select>
+      </div>
+      <div class="fl-group"><span class="fl-lbl">Disponibilidade</span>
+        <select class="fl-sel" id="filterAvail" onchange="renderCatalog()">
+          <option value="all">Todos</option>
+          <option value="ready">Pronta Entrega</option>
+          <option value="order">Sob Encomenda</option>
+        </select>
+      </div>
+    </div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ CONFIGURADOR ═══════════════════════ -->
+<div class="pub-sec" id="pub-configurator">
+  <div class="cfg-sec">
+    <div style="margin-bottom:24px">
+      <div class="eyebrow">Personalizador</div>
+      <h2 class="sh">Monte sua Lâmina</h2>
+      <p style="color:var(--metal-lt)">Configure cada detalhe. O preço é calculado em tempo real.</p>
+    </div>
+    <div class="cfg-layout">
+      <div class="cfg-panel">
+        <div class="cfg-step"><div class="cfg-step-title"><span class="cfg-num">1</span> Modelo</div><div class="cfg-opts" id="cfgModel"></div></div>
+        <div class="cfg-step"><div class="cfg-step-title"><span class="cfg-num">2</span> Construção</div><div class="cfg-opts" id="cfgConstruction"></div></div>
+        <div class="cfg-step"><div class="cfg-step-title"><span class="cfg-num">3</span> Tipo de Aço</div><div class="cfg-opts" id="cfgSteel"></div></div>
+        <div class="cfg-step"><div class="cfg-step-title"><span class="cfg-num">4</span> Cabo</div><div class="cfg-opts" id="cfgHandle"></div></div>
+        <div class="cfg-step"><div class="cfg-step-title"><span class="cfg-num">5</span> Acabamento</div><div class="cfg-opts" id="cfgFinish"></div></div>
+        <div class="cfg-step"><div class="cfg-step-title"><span class="cfg-num">6</span> Bainha</div><div class="cfg-opts" id="cfgSheath"></div></div>
+      </div>
+      <div class="cfg-sum">
+        <div class="cfg-preview">
+          <img id="cfgPreviewImg" src="" alt="Prévia" style="opacity:0"/>
+          <div class="cfg-preview-name" id="cfgName">Dragon Forge Custom</div>
+        </div>
+        <div class="cfg-sum-body">
+          <div class="sum-row"><span class="sum-k">Modelo</span><span class="sum-v" id="sumModel">—</span></div>
+          <div class="sum-row"><span class="sum-k">Construção</span><span class="sum-v" id="sumConstr">—</span></div>
+          <div class="sum-row"><span class="sum-k">Aço</span><span class="sum-v" id="sumSteel">—</span></div>
+          <div class="sum-row"><span class="sum-k">Cabo</span><span class="sum-v" id="sumHandle">—</span></div>
+          <div class="sum-row"><span class="sum-k">Acabamento</span><span class="sum-v" id="sumFinish">—</span></div>
+          <div class="sum-row"><span class="sum-k">Bainha</span><span class="sum-v" id="sumSheath">—</span></div>
+          <div class="sum-divider"></div>
+          <div class="sum-price-row">
+            <span>Preço estimado</span>
+            <div class="cfg-price" id="cfgPrice">R$ 450</div>
+          </div>
+          <div class="sum-deadline">Prazo: <span id="cfgDeadline">45 dias</span></div>
+          <button class="btn btn-primary btn-full" style="margin-top:18px" onclick="requestOrder()">Pagar e gerar rastreio</button>
+          <button class="btn btn-secondary btn-full" style="margin-top:8px" onclick="openWA('Olá! Configurei uma faca personalizada e gostaria de mais detalhes.')">💬 Orçamento via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PROMOÇÕES ═══════════════════════ -->
+<div class="pub-sec" id="pub-promotions">
+  <div class="pub-pad">
+    <div style="text-align:center;margin-bottom:38px">
+      <div class="eyebrow">Ofertas</div>
+      <h2 class="sh">Semana da Forja</h2>
+      <p style="color:var(--metal-lt)">Descontos especiais por tempo limitado.</p>
+    </div>
+    <div class="promo-cards" id="promoCards"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SOBRE ═══════════════════════ -->
+<div class="pub-sec" id="pub-about">
+  <div class="pub-pad">
+    <div class="pub-max" style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow">Nossa história</div>
+      <h2 class="sh">Sobre a Dragon Forge</h2>
+    </div>
+    <div class="about-timeline">
+      <div class="atl-item"><div class="atl-year">2010</div><div class="atl-bar"></div><div class="atl-content"><div class="atl-title">O começo</div><p class="atl-desc">Rodrigo Barbosa inicia na cutelaria artesanal como hobby, forjando as primeiras peças em uma pequena oficina no fundo de casa.</p></div></div>
+      <div class="atl-item"><div class="atl-year">2014</div><div class="atl-bar"></div><div class="atl-content"><div class="atl-title">Primeira venda</div><p class="atl-desc">A reputação cresce boca a boca. Primeiros clientes aparecem por indicação, e o hobby vira trabalho de verdade.</p></div></div>
+      <div class="atl-item"><div class="atl-year">2018</div><div class="atl-bar"></div><div class="atl-content"><div class="atl-title">Dragon Forge nasce</div><p class="atl-desc">A marca é oficializada. Nova oficina maior, equipamentos profissionais e foco total em qualidade acima de quantidade.</p></div></div>
+      <div class="atl-item"><div class="atl-year">2022</div><div class="atl-bar"></div><div class="atl-content"><div class="atl-title">Reconhecimento nacional</div><p class="atl-desc">Peças expostas em feiras de cutelaria em São Paulo e Rio. Clientes em todos os estados do Brasil.</p></div></div>
+      <div class="atl-item"><div class="atl-year">Hoje</div><div class="atl-bar"></div><div class="atl-content"><div class="atl-title">Excelência artesanal</div><p class="atl-desc">Mais de 500 facas entregues, 0% de reclamações, e cada peça ainda feita à mão com o mesmo cuidado do primeiro dia.</p></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:40px">
+      <div class="about-stat"><div class="about-val">500+</div><div class="about-lbl">Facas entregues</div></div>
+      <div class="about-stat"><div class="about-val">15+</div><div class="about-lbl">Anos de experiência</div></div>
+      <div class="about-stat"><div class="about-val">100%</div><div class="about-lbl">Satisfação garantida</div></div>
+      <div class="about-stat"><div class="about-val">50+</div><div class="about-lbl">Modelos criados</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<div class="pub-sec" id="pub-faq">
+  <div class="pub-pad">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="eyebrow">Dúvidas</div>
+      <h2 class="sh">Perguntas Frequentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Qual o prazo de entrega de uma faca personalizada?</span><div class="faq-icon">+</div></div><div class="faq-a">O prazo varia conforme a complexidade da faca. Modelos padrão levam de 30 a 45 dias úteis. Facas com Damascus forjado, madeiras nobres raras ou gravações personalizadas podem levar até 60 dias. O prazo exato é confirmado no momento do pedido e você acompanha tudo pelo sistema de rastreio.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Quais formas de pagamento são aceitas?</span><div class="faq-icon">+</div></div><div class="faq-a">Aceitamos PIX (com 5% de desconto), cartão de crédito em até 12x e boleto bancário. Para pedidos acima de R$ 1.500, trabalhamos também com entrada de 50% + saldo na entrega.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Vocês enviam para todo o Brasil?</span><div class="faq-icon">+</div></div><div class="faq-a">Sim, enviamos para todo o território nacional pelos Correios (SEDEX ou PAC) e transportadoras parceiras. O frete é calculado no fechamento do pedido conforme o CEP de destino. Todas as facas são embaladas individualmente com proteção especial para transporte seguro.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>As facas possuem garantia?</span><div class="faq-icon">+</div></div><div class="faq-a">Todas as nossas facas têm garantia vitalícia contra defeitos de fabricação — solda, acabamento, delaminação e fissuras estruturais. Danos por uso inadequado não são cobertos. Em caso de problema, entre em contato e avaliamos sem burocracia.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Posso escolher o tamanho e os materiais?</span><div class="faq-icon">+</div></div><div class="faq-a">Sim, totalmente! Use o configurador online para escolher modelo, construção, aço, madeira, acabamento e bainha. Para algo ainda mais específico entre em contato via WhatsApp.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Como devo cuidar da minha faca Dragon Forge?</span><div class="faq-icon">+</div></div><div class="faq-a">Para aços carbono: seque imediatamente após o uso e aplique óleo mineral. Para inox: manutenção mínima, só lavar e secar. O cabo de madeira deve ser hidratado com óleo de linhaça a cada 3 meses. Nunca use máquina de lavar louça.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Vocês fazem facas para presentear?</span><div class="faq-icon">+</div></div><div class="faq-a">É uma das nossas especialidades! Toda faca Dragon Forge vem em estojo artesanal de madeira com certificado de autenticidade. Para presentes, oferecemos gravação do nome na lâmina e cartão personalizado sem custo adicional.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>É possível visitar a oficina?</span><div class="faq-icon">+</div></div><div class="faq-a">Sim! Recebemos visitas com agendamento prévio. Entre em contato via WhatsApp para verificar disponibilidade de datas.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:44px;padding-top:38px;border-top:1px solid rgba(255,255,255,.06)">
+      <p style="color:var(--metal);font-size:.9rem;margin-bottom:18px">Não encontrou sua resposta?</p>
+      <button class="btn btn-primary btn-lg" onclick="openWA('Olá! Tenho uma dúvida sobre as facas Dragon Forge.')">💬 Falar no WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ CONTATO ═══════════════════════ -->
+<div class="pub-sec" id="pub-contact">
+  <div class="pub-pad">
+    <div style="text-align:center;margin-bottom:34px">
+      <div class="eyebrow">Fale conosco</div>
+      <h2 class="sh">Contato</h2>
+      <p style="color:var(--metal-lt)">Dúvidas, orçamentos ou apenas bater um papo sobre cutelaria.</p>
+    </div>
+    <div class="contact-card">
+      <div class="fg"><label for="contactName">Nome completo</label><input type="text" id="contactName" placeholder="Seu nome"/></div>
+      <div class="fg"><label for="contactEmail">E-mail</label><input type="email" id="contactEmail" placeholder="seu@email.com"/></div>
+      <div class="fg"><label for="contactSubject">Assunto</label>
+        <select id="contactSubject">
+          <option>Orçamento personalizado</option>
+          <option>Dúvida sobre produto</option>
+          <option>Prazo de entrega</option>
+          <option>Parceria comercial</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="fg"><label for="contactMsg">Mensagem</label><textarea id="contactMsg" placeholder="Escreva sua mensagem aqui..."></textarea></div>
+      <button class="btn btn-primary btn-full" style="margin-top:6px" onclick="submitContact()">Enviar Mensagem</button>
+      <div class="contact-ok" id="contactOk">Mensagem enviada! Retornaremos em até 24 horas.</div>
+      <div class="divider" style="margin-top:22px">ou fale direto</div>
+      <button class="btn btn-full" style="background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);color:#25d366;font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;padding:11px" onclick="openWA('Olá! Vim pelo site Dragon Forge e gostaria de mais informações.')">💬 WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MEUS PEDIDOS ═══════════════════════ -->
+<div class="pub-sec" id="pub-my-orders">
+  <div class="pub-pad">
+    <div class="pub-max" style="max-width:860px">
+      <div style="text-align:center;margin-bottom:36px">
+        <div class="eyebrow">Área do Cliente</div>
+        <h2 class="sh">Meus Pedidos</h2>
+        <p style="color:var(--metal-lt)">Acompanhe o status e rastreio de cada encomenda em tempo real.</p>
+      </div>
+      <div id="myOrdersContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ RASTREIO ═══════════════════════ -->
+<div class="pub-sec" id="pub-tracking">
+  <div class="pub-pad">
+    <div class="pub-max" style="max-width:760px">
+      <div style="text-align:center;margin-bottom:42px">
+        <div class="eyebrow">Acompanhamento</div>
+        <h2 class="sh">Rastrear Pedido</h2>
+        <p style="color:var(--metal-lt)">Insira o número do pedido ou o código de rastreio.</p>
+      </div>
+      <div style="background:var(--graphite);border:1px solid rgba(255,255,255,.07);padding:24px;margin-bottom:28px">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <input id="trackInput" type="text" placeholder="Ex: DF001 ou SQ123456789BR"
+            style="flex:1;min-width:200px;background:var(--graphite2);border:1px solid rgba(255,255,255,.1);padding:11px 14px;color:var(--white);font-size:.93rem;outline:none;font-family:inherit"
+            onkeydown="if(event.key==='Enter')doTrack()"
+            oninput="this.value=this.value.toUpperCase()"/>
+          <button class="btn btn-primary" onclick="doTrack()" style="white-space:nowrap">Rastrear</button>
+        </div>
+        <p style="margin-top:14px;font-size:.76rem;color:var(--metal)">
+          Para testar:
+          <span style="color:var(--orange);cursor:pointer;font-weight:600" onclick="document.getElementById('trackInput').value='DF001';doTrack()">DF001</span>,
+          <span style="color:var(--orange);cursor:pointer;font-weight:600" onclick="document.getElementById('trackInput').value='DF002';doTrack()">DF002</span>,
+          <span style="color:var(--orange);cursor:pointer;font-weight:600" onclick="document.getElementById('trackInput').value='DF003';doTrack()">DF003</span>
+        </p>
+      </div>
+      <div id="trackResult"></div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp flutuante -->
+<a class="wa-float" onclick="openWA('Olá! Vi o site Dragon Forge e gostaria de informações.')" title="WhatsApp"></a>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/mat_imgs.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
